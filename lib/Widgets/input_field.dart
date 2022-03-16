@@ -1,12 +1,12 @@
-// ignore: must_be_immutable
-// ignore_for_file: prefer_const_constructors
+
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, must_be_immutable
 
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class InputField extends StatelessWidget {
 
-  String hintTexti;
+ final String hintTexti;
   Icon inputIcon;
   InputField({Key? key, required this.hintTexti,required this.inputIcon})
       : super(key: key);
@@ -56,7 +56,7 @@ class InputField extends StatelessWidget {
 ///password
 class InputFieldPassword extends StatefulWidget {
  
-  String hintTexti;
+  final String hintTexti;
  
 
   InputFieldPassword(

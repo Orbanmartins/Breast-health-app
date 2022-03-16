@@ -1,90 +1,70 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors
 
-
-import 'package:breast_health_app/Screens/example_three.dart';
-import 'package:breast_health_app/Screens/example_two.dart';
-import 'package:breast_health_app/Widgets/nav_bar.dart';
-import 'package:breast_health_app/Widgets/navigation_bar_icons.dart';
+import 'package:breast_health_app/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatefulWidget {
+class BasicBottomNavBar extends StatefulWidget {
+  const BasicBottomNavBar({Key? key}) : super(key: key);
+
   @override
-  _BottomNavBar createState() => _BottomNavBar();
+  _BasicBottomNavBarState createState() => _BasicBottomNavBarState();
 }
 
-class _BottomNavBar extends State<BottomNavBar> {
-  int _selectedScreenIndex = 0;
+class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
+  int _selectedIndex = 0;
 
-  late final List<Widget> _screens = [
-    ExamplePage(),
-    ExamplePageTwo(),
-    ExampleThree(),
-
+  late final List<Widget> _pages = <Widget>[
+  HomeScreeen(),
+    Icon(
+      Icons.camera,
+      size: 150,
+    ),
+    Icon(
+      Icons.chat,
+      size: 150,
+    ),
+    // Icon(
+    //   Icons.chat,
+    //   size: 150,
+    // ),
   ];
 
-  _selectScreen(int index) {
+  void _onItemTapped(int index) {
     setState(() {
-      _selectedScreenIndex = index;
+      _selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Flexible(
-            fit: FlexFit.tight,
-            child: SingleChildScrollView(
-              child: _screens[_selectedScreenIndex],
-            ),
+      appBar: AppBar(
+        title: const Text('BottomNavigationBar Demo'),
+      ),
+      body: Center(
+        child: _pages.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.call),
+            label: 'Calls',
           ),
-          Container(
-            height: 74,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.05),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    NavBarIcon(
-                      icon: Icons.add_location,
-                      inactiveIcon: Icons.add_location,
-                      label: "Location",
-                      labelOnActive: true,
-                      darkMode: false,
-                      active: (_selectedScreenIndex == 0),
-                      onClick: () => _selectScreen(0),
-                    ),
-                    NavBarIcon(
-                      icon: Icons.chat_rounded,
-                      inactiveIcon: Icons.chat_rounded,
-                      label: "Chat",
-                      labelOnActive: true,
-                      darkMode: false,
-                      active: (_selectedScreenIndex == 1),
-                      onClick: () => _selectScreen(1),
-                    ),
-                    NavBarIcon(
-                      icon: Icons.question_answer,
-                      inactiveIcon: Icons.question_answer,
-                      label: "FAQS",
-                      labelOnActive: true,
-                      darkMode: false,
-                      active: (_selectedScreenIndex == 2),
-                      onClick: () => _selectScreen(2),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera),
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chats',
+          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.chat),
+          //   label: 'Chats',
+          // ),
         ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }

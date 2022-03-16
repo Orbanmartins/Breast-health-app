@@ -32,37 +32,38 @@ class SurveyQuestions extends StatelessWidget {
                     },
                     task: task,
                     showProgress: true,
+                    // ignore: prefer_const_literals_to_create_immutables
                     localizations: {
                       'cancel': 'Cancel',
                       'next': 'Next',
                     },
                     themeData: Theme.of(context).copyWith(
                       colorScheme: ColorScheme.fromSwatch(
-                        primarySwatch: Colors.cyan,
+                        primarySwatch: Colors.pink,
                       ).copyWith(
-                        onPrimary: Colors.white,
+                        onPrimary: scaffoldBackgroundColor,
                       ),
-                      primaryColor: Colors.cyan,
-                      backgroundColor: Colors.white,
+                      primaryColor: mainColor,
+                      backgroundColor:scaffoldBackgroundColor,
                       appBarTheme: const AppBarTheme(
-                        color: Colors.white,
+                        color: mainColor,
                         iconTheme: IconThemeData(
-                          color: Colors.cyan,
+                          color: mainColor,
                         ),
                         titleTextStyle: TextStyle(
-                          color: Colors.cyan,
+                          color: mainColor,
                         ),
                       ),
                       iconTheme: const IconThemeData(
-                        color: Colors.cyan,
+                        color: mainColor,
                       ),
                       textSelectionTheme: TextSelectionThemeData(
-                        cursorColor: Colors.cyan,
-                        selectionColor: Colors.cyan,
-                        selectionHandleColor: Colors.cyan,
+                        cursorColor: mainColor,
+                        selectionColor: mainColor,
+                        selectionHandleColor: mainColor,
                       ),
                       cupertinoOverrideTheme: CupertinoThemeData(
-                        primaryColor: Colors.cyan,
+                        primaryColor: mainColor,
                       ),
                       outlinedButtonTheme: OutlinedButtonThemeData(
                         style: ButtonStyle(
@@ -77,14 +78,9 @@ class SurveyQuestions extends StatelessWidget {
                                 );
                               }
                               return BorderSide(
-                                color: Colors.cyan,
+                                color: mainColor,
                               );
                             },
-                          ),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
                           ),
                           textStyle: MaterialStateProperty.resolveWith(
                             (Set<MaterialState> state) {
@@ -100,7 +96,7 @@ class SurveyQuestions extends StatelessWidget {
                                   .textTheme
                                   .button
                                   ?.copyWith(
-                                    color: Colors.cyan,
+                                    color: mainColor,
                                   );
                             },
                           ),
@@ -163,67 +159,62 @@ class SurveyQuestions extends StatelessWidget {
           text: 'Get ready for a bunch of super random questions!',
           buttonText: 'Let\'s go!',
         ),
+        QuestionStep(
+          title: 'How old are you?',
+          answerFormat: IntegerAnswerFormat(
+            defaultValue: 25,
+            hint: 'Please enter your age',
+          ),
+          isOptional: true,
+        ),
+      
        
         QuestionStep(
-          title: 'Medication?',
-          text: 'Are you using any medication',
+          title: 'Please Select your Age',
+          answerFormat: ScaleAnswerFormat(
+            step: 1,
+            minimumValue: 1,
+            maximumValue: 100,
+            defaultValue: 3,
+            minimumValueDescription: '10',
+            maximumValueDescription: '100',
+          ),
+        ),
+        QuestionStep(
+          title: 'Education Level',
+          text: 'What is your level of Education?',
+          isOptional: false,
+          answerFormat: MultipleChoiceAnswerFormat(
+            textChoices: [
+              TextChoice(text: 'Primary', value: 'Penicillin'),
+              TextChoice(text: 'O\' Level', value: 'O\' Level'),
+              TextChoice(text: 'A\' Level', value: 'A\' Level'),
+              TextChoice(text: 'University', value: 'University'),
+            ],
+          ),
+        ),
+         QuestionStep(
+          title: 'Cancer History',
+          text: 'Do you know some close ones who had a breast condition?',
           answerFormat: BooleanAnswerFormat(
             positiveAnswer: 'Yes',
             negativeAnswer: 'No',
             result: BooleanResult.POSITIVE,
           ),
         ),
-       
-        QuestionStep(
-          title: 'Select your body type',
-          answerFormat: ScaleAnswerFormat(
-            step: 1,
-            minimumValue: 1,
-            maximumValue: 5,
-            defaultValue: 3,
-            minimumValueDescription: '1',
-            maximumValueDescription: '5',
-          ),
-        ),
-        QuestionStep(
-          title: 'Known allergies',
-          text: 'Do you have any allergies that we should be aware of?',
+          QuestionStep(
+          title: 'Motivation for using App',
+          text: 'What is your motivation for using the app',
           isOptional: false,
           answerFormat: MultipleChoiceAnswerFormat(
             textChoices: [
-              TextChoice(text: 'Penicillin', value: 'Penicillin'),
-              TextChoice(text: 'Latex', value: 'Latex'),
-              TextChoice(text: 'Pet', value: 'Pet'),
-              TextChoice(text: 'Pollen', value: 'Pollen'),
+              TextChoice(text: 'Research', value: 'Research'),
+              TextChoice(text: 'Learn about my breast health', value: 'Learn about my breast health'),
+              TextChoice(text: 'News on breast health', value: 'News on breast health'),
+              TextChoice(text: 'Other', value: 'Other'),
             ],
           ),
         ),
-         QuestionStep(
-          title: 'Known allergies',
-          text: 'Do you have any allergies that we should be aware of?',
-          isOptional: false,
-          answerFormat: MultipleChoiceAnswerFormat(
-            textChoices: [
-              TextChoice(text: 'Penicillin', value: 'Penicillin'),
-              TextChoice(text: 'Latex', value: 'Latex'),
-              TextChoice(text: 'Pet', value: 'Pet'),
-              TextChoice(text: 'Pollen', value: 'Pollen'),
-            ],
-          ),
-        ),
-        QuestionStep(
-          title: 'Done?',
-          text: 'We are done, do you mind to tell us more about yourself?',
-          isOptional: true,
-          answerFormat: SingleChoiceAnswerFormat(
-            textChoices: [
-              TextChoice(text: 'Yes', value: 'Yes'),
-              TextChoice(text: 'No', value: 'No'),
-            ],
-            defaultSelection: TextChoice(text: 'No', value: 'No'),
-          ),
-        ),
-    
         CompletionStep(
           stepIdentifier: StepIdentifier(id: '321'),
           text: 'Thanks for taking the survey, we will contact you soon!',
