@@ -1,10 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:flutter/material.dart';
 
 
 class CheckBoxList extends StatefulWidget {
-  CheckBoxList({required this.children}) {
-    this.values = List.generate(children.length, (index) => false);
+  CheckBoxList({Key? key, required this.children}) : super(key: key) {
+    values = List.generate(children.length, (index) => false);
   }
   final List<String> children;
   // final int count;

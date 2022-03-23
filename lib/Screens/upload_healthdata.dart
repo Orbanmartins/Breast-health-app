@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, non_constant_identifier_names, unrelated_type_equality_checks, avoid_print
 
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -95,24 +95,21 @@ class _UploadHealthDataState extends State<UploadHealthData> {
                         left: 80,
                         right: 0,
                         bottom: 0,
-                        child: Container(
-                          // margin: EdgeInsets.only(left: 50, right: 60),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 40,
-                                height: 40,
-                                child: FloatingActionButton(
-                                    backgroundColor: mainColor,
-                                    onPressed: RemoveImage,
-                                    child: Icon(
-                                      Icons.delete_forever,
-                                      color: Colors.white,
-                                      size: 30,
-                                    )),
-                              ),
-                            ],
-                          ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: 40,
+                              height: 40,
+                              child: FloatingActionButton(
+                                  backgroundColor: mainColor,
+                                  onPressed: RemoveImage,
+                                  child: Icon(
+                                    Icons.delete_forever,
+                                    color: Colors.white,
+                                    size: 30,
+                                  )),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -160,8 +157,7 @@ class _UploadHealthDataState extends State<UploadHealthData> {
   Future<void> openCamera() async {
     var CameraStatus = await Permission.camera;
     var GalleryStatus = await Permission.storage;
-    //print(CameraStatus);
-    //print(GalleryStatus);
+ 
 
     if (CameraStatus.isGranted != true) {
       await Permission.camera.request();

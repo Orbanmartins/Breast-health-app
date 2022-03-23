@@ -6,7 +6,6 @@ import 'dart:async';
 
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:breast_health_app/Screens/signin.dart';
-import 'package:breast_health_app/Screens/signup.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

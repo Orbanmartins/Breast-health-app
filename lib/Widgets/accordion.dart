@@ -21,7 +21,7 @@ class _AccordionState extends State<Accordion> {
       margin: const EdgeInsets.all(3),
       child: Column(children: [
         ListTile(
-          title: Text(widget.title, style: TextStyle(color: mainColor,fontSize: 18),),
+          title: Text(widget.title, style: TextStyle(color: Colors.black,fontSize: 18),),
           trailing: IconButton(iconSize: 35,
             icon: Icon(
                 _showContent ? Icons.keyboard_arrow_up_outlined : Icons.keyboard_arrow_down_outlined),

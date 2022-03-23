@@ -1,169 +1,90 @@
-import 'package:breast_health_app/Screens/other_input.dart';
-import 'package:breast_health_app/Widgets/CheckBoxList.dart';
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
+import 'package:breast_health_app/Widgets/Survey/CheckBoxList.dart';
+import 'package:breast_health_app/Widgets/Survey/CustomCard.dart';
+import 'package:breast_health_app/Widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class SurveyStepper extends StatefulWidget {
-  const SurveyStepper({Key? key}) : super(key: key);
+class QuestionnaireSurvey extends StatefulWidget {
+  QuestionnaireSurvey({Key? key}) : super(key: key);
 
   @override
-  _SurveyStepperState createState() => _SurveyStepperState();
+  State<QuestionnaireSurvey> createState() => _QuestionnaireSurveyState();
 }
 
-enum EducationLevel { Primary, OrdinaryLevel, AdvancedLevel, University }
-
-class _SurveyStepperState extends State<SurveyStepper> {
-  // the current step
-  int _currentStep = 0;
-
-  // Determines whether the stepper's orientation is vertical or horizontal
-  // This variable can be changed by using the switch below
-  bool _isVerticalStepper = true;
-
-  // This function will be triggered when a step is tapped
-  _stepTapped(int step) {
-    setState(() => _currentStep = step);
-  }
-
-  // This function will be called when the continue button is tapped
-  _stepContinue() {
-    _currentStep < 2 ? setState(() => _currentStep += 1) : null;
-  }
-
-  // This function will be called when the cancel button is tapped
-  _stepCancel() {
-    _currentStep > 0 ? setState(() => _currentStep -= 1) : null;
-  }
-
-  EducationLevel? _character = EducationLevel.Primary;
+class _QuestionnaireSurveyState extends State<QuestionnaireSurvey> {
+  double _currentSliderValue = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('KindaCode.com'),
-      ),
-      body: Column(
+        body: SafeArea(
+            child: SingleChildScrollView(
+      child: Column(
         children: [
-          // Controls the stepper orientation
-          SwitchListTile(
-              title: const Text('Vertical Stepper?'),
-              subtitle: const Text('vertical/horizontal direction'),
-              value: _isVerticalStepper,
-              onChanged: (_) {
-                setState(() {
-                  _isVerticalStepper = !_isVerticalStepper;
-                });
-              }),
-          const Divider(
-            thickness: 2,
-            height: 30,
+          CustomCard(
+            cardData: 'Please select your age',
+            children: [
+              Slider(
+                min: 0.0,
+                max: 100.0,
+                activeColor: Colors.purple,
+                inactiveColor: Colors.purple.shade100,
+                thumbColor: Colors.pink,
+                value: _currentSliderValue,
+                onChanged: (double value) {
+                  setState(() {
+                    _currentSliderValue = value;
+                  });
+                },
+              )
+            ],
           ),
-
-          Expanded(
-            // the Stepper widget
-            child: Stepper(
-              // vertical or horizontial
-              type: _isVerticalStepper
-                  ? StepperType.vertical
-                  : StepperType.horizontal,
-              physics: const ScrollPhysics(),
-              currentStep: _currentStep,
-              onStepTapped: (step) => _stepTapped(step),
-              onStepContinue: _stepContinue,
-              onStepCancel: _stepCancel,
-              steps: [
-                // The first step: Name
-                Step(
-                  title: const Text('Age'),
-                  content: Column(
-                    children: [
-                      CustomFormField(hintText: 'Please enter your age ')
-                    ],
-                  ),
-                  isActive: _currentStep >= 0,
-                  state: _currentStep >= 0
-                      ? StepState.complete
-                      : StepState.disabled,
-                ),
-                // The second step: Phone number
-                Step(
-                  title: const Text('District'),
-                  content: Column(
-                    children: [
-                      CustomFormField(hintText: 'Please enter your District ')
-                    ],
-                  ),
-                  isActive: _currentStep >= 0,
-                  state: _currentStep >= 1
-                      ? StepState.complete
-                      : StepState.disabled,
-                ),
-                // The third step: Verify phone number
-                Step(
-                  title: const Text('Verify'),
-                  content: Column(
-                    children: <Widget>[
-                      ListTile(
-                        title: const Text('Lafayette'),
-                        leading: Radio<EducationLevel>(
-                          value: EducationLevel.Primary,
-                          groupValue: _character,
-                          onChanged: (EducationLevel? value) {
-                            setState(() {
-                              _character = value;
-                            });
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  isActive: _currentStep >= 0,
-                  state: _currentStep >= 2
-                      ? StepState.complete
-                      : StepState.disabled,
-                ),
-                Step(
-                  title: const Text('District'),
-                  content: Column(
-                    children: [
-                      CustomFormField(hintText: 'Please enter your District ')
-                    ],
-                  ),
-                  isActive: _currentStep >= 0,
-                  state: _currentStep >= 3
-                      ? StepState.complete
-                      : StepState.disabled,
-                ),
-                Step(
-                  title: const Text('District'),
-                  content: Column(
-                    children: [
-                      CustomFormField(hintText: 'Please enter your District ')
-                    ],
-                  ),
-                  isActive: _currentStep >= 0,
-                  state: _currentStep >= 4
-                      ? StepState.complete
-                      : StepState.disabled,
-                ),
-                Step(
-                  title: const Text('District'),
-                  content: Column(
-                    children: [
-                      CustomFormField(hintText: 'Please enter your District ')
-                    ],
-                  ),
-                  isActive: _currentStep >= 0,
-                  state: _currentStep >= 5
-                      ? StepState.complete
-                      : StepState.disabled,
-                ),
-              ],
-            ),
+          CustomCard(
+            cardData: 'What is your level of Education?',
+            children: [
+              CheckBoxList(
+                children: [
+                  'Primary',
+                  'O\'Level',
+                  'A\'Level',
+                  'Tertiary',
+                  'University'
+                ],
+              ),
+            ],
           ),
+          CustomCard(
+            cardData: 'Do you know anyone close to\n you who had cancer',
+            children: [
+              CheckBoxList(
+                children: [
+                  'Yes',
+                  'No',
+                ],
+              ),
+            ],
+          ),
+          CustomCard(
+            cardData: 'What is your motivation for\n using the application',
+            children: [
+              CheckBoxList(
+                children: [
+                  'Research',
+                  'Breast health',
+                  'News about breast health',
+                  'Other'
+                ],
+              ),
+            ],
+          ),
+          CustomButton(
+            buttonTitle: 'Submit',
+            navigationFunction: () {
+              Navigator.pushNamed(context, '/homeScreen');
+            },
+          )
         ],
       ),
-    );
+    )));
   }
 }

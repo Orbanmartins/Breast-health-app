@@ -8,6 +8,8 @@ import 'package:breast_health_app/Widgets/testimonies/testimoniesContent.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreeen extends StatefulWidget {
+  const HomeScreeen({Key? key}) : super(key: key);
+
   @override
   State<HomeScreeen> createState() => _HomeScreeenState();
 }
@@ -36,18 +38,19 @@ class _HomeScreeenState extends State<HomeScreeen> {
                 children: <Widget>[
                   UserCard(
                       navigationFunction: () {
-                        Navigator.pushNamed(context, '/nextCheck');
+                        Navigator.pushNamed(context, '/selfCheck');
                       },
                       cardChild: UserCardContent(
                           userIcon: Icons.person,
                           userLabel: 'BREAST SELF EXAM')),
                   UserCard(
                       navigationFunction: () {
-                        Navigator.pushNamed(context, '/faqsAccordion');
+                        Navigator.pushNamed(context, '/knoweledgeCentreCards');
                       },
                       cardChild: UserCardContent(
                           userIcon: Icons.account_balance,
                           userLabel: 'KNOWLEDGE CENTRE')),
+                          //I have replaced this uploadHealthData with the cards thing
                   UserCard(
                       navigationFunction: () {
                         Navigator.pushNamed(context, '/uploadHealthData');
@@ -56,7 +59,7 @@ class _HomeScreeenState extends State<HomeScreeen> {
                           userIcon: Icons.person, userLabel: 'HEALTH DATA')),
                   UserCard(
                       navigationFunction: () {
-                        Navigator.pushNamed(context, '/individualcards');
+                        Navigator.pushNamed(context, '/nextCheck');
                       },
                       cardChild: UserCardContent(
                           userIcon: Icons.calendar_today,
@@ -93,7 +96,7 @@ class _HomeScreeenState extends State<HomeScreeen> {
                     ),
                     userTitle: 'Ruth Kalimbala',
                     userBody:
-                        'When an unknown printer took \na galley of type and scrambled it t',
+                        'When an unknown printer took \na galley of type ',
                   ),
                   navigationFunction: () {
                     Navigator.pushNamed(context, '/uploadHealthData');

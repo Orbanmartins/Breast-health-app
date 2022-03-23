@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:breast_health_app/Constants/constants.dart';
+import 'package:breast_health_app/Screens/Faqs.dart';
 import 'package:breast_health_app/Screens/home_screen.dart';
+import 'package:breast_health_app/Screens/upload_healthdata.dart';
 import 'package:flutter/material.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
@@ -14,19 +17,10 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
   int _selectedIndex = 0;
 
   late final List<Widget> _pages = <Widget>[
-  HomeScreeen(),
-    Icon(
-      Icons.camera,
-      size: 150,
-    ),
-    Icon(
-      Icons.chat,
-      size: 150,
-    ),
-    // Icon(
-    //   Icons.chat,
-    //   size: 150,
-    // ),
+    HomeScreeen(),
+    FaqsAccordion(),
+    UploadHealthData(),
+
   ];
 
   void _onItemTapped(int index) {
@@ -38,30 +32,24 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Demo'),
-      ),
-      body: Center(
+        body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: mainColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.call),
-            label: 'Calls',
+            icon: Icon(Icons.maps_home_work_sharp),
+            label: 'LOCATION',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'Camera',
+            icon: Icon(Icons.chat_bubble),
+            label: 'CHAT',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chats',
+            icon: Icon(Icons.phone_callback),
+            label: 'INQUIRIES',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.chat),
-          //   label: 'Chats',
-          // ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

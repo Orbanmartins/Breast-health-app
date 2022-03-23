@@ -2,6 +2,7 @@
 
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:breast_health_app/Screens/signup.dart';
+import 'package:breast_health_app/Widgets/button.dart';
 import 'package:breast_health_app/Widgets/input_field.dart';
 import 'package:flutter/material.dart';
 
@@ -71,21 +72,28 @@ class _NextCheckState extends State<NextCheck> {
           Container(
             margin: EdgeInsets.all(20),
             child: Card(
-              child: ListTile(
-                leading: Icon(
-                  Icons.info_outline,
-                  color: mainColor,
-                  size: 40,
-                ),
-                title: Text(
-                  'Your next self-check is scheduled for April 06,2022',
-                  style: TextStyle(
-                    fontSize: 20,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.info_outline,
+                    color: mainColor,
+                    size: 50,
+                  ),
+                  title: Text(
+                    'Your next self-check is scheduled for April 06,2022',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
             ),
-          )
+          ),
+
+          CustomButton(buttonTitle: 'Submit', navigationFunction: () {
+                    Navigator.pushNamed(context, '/homeScreen');
+                  },)
         ],
       ),
     );

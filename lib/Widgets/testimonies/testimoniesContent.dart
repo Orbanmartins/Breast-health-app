@@ -15,7 +15,7 @@ class TestimoniesContent extends StatelessWidget {
   // final String readMore;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Flexible(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -35,39 +35,43 @@ class TestimoniesContent extends StatelessWidget {
                 Text(
                   userTitle,
                   textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.grey[900],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    fontSize: smallTextSize,
                   ),
                 ),
                 SizedBox(
-                  height: 4,
+                  height: 3,
                 ),
                 //The body area
-                Text(
-                  userBody,
-                  overflow: TextOverflow.clip,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontWeight: FontWeight.normal,
-                    fontSize: 15,
+                Expanded(
+                  child: Text(
+                    userBody,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.normal,
+                      fontSize: bodyTextSize,
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 4,
                 ),
-
+    
                 Padding(
                   padding: const EdgeInsets.only(left:100.0),
                   child: Text(
                     'Read more',
-                    textAlign: TextAlign.right,
+                    // textAlign: TextAlign.right,
                     style: TextStyle(
                       color: mainColor,
                       fontWeight: FontWeight.normal,
-                      fontSize: 15,
+                      fontSize: smallTextSize,
                     ),
                   ),
                 ),

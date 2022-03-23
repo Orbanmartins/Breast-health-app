@@ -27,10 +27,8 @@ class InputField extends StatelessWidget {
         Container(
             margin: const EdgeInsets.only(left: 20, right: 20),
             decoration: BoxDecoration(
-              color: grayshade.withOpacity(0.5),
-              // border: Border.all(
-              //   width: 1,
-              // ),
+              color: inputField,
+     
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
@@ -86,10 +84,7 @@ class _InputFieldPasswordState extends State<InputFieldPassword> {
         Container(
           margin: const EdgeInsets.only(left: 20, right: 20),
           decoration: BoxDecoration(
-            color: grayshade.withOpacity(0.5),
-            // border: Border.all(
-            //   width: 1,
-            // ),
+            color: inputField,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(

@@ -1,10 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:breast_health_app/Constants/constants.dart';
-import 'package:breast_health_app/Screens/Faqs.dart';
-import 'package:breast_health_app/Screens/home_screen.dart';
-import 'package:breast_health_app/Screens/signin.dart';
-import 'package:breast_health_app/Screens/survey_questions.dart';
+import 'package:breast_health_app/Screens/selfCheck/slide.dart';
+import 'package:breast_health_app/Screens/survey.dart';
+import 'package:breast_health_app/Widgets/button.dart';
 import 'package:breast_health_app/Widgets/input_field.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -71,37 +70,17 @@ class SignUp extends StatelessWidget {
                       hintTexti: "Password",
                     ),
                     const CheckerBox(),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              // ignore: prefer_const_constructors
-                                              builder: (context) => SurveyQuestions()));
-                        print("Sign up click");
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.07,
-                        margin: const EdgeInsets.only(left: 20, right: 20),
-                        decoration: BoxDecoration(
-                            color: mainColor,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10))),
-                        child: Center(
-                          child: Text(
-                            "Continue",
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                                color: whiteshade),
-                          ),
-                        ),
-                      ),
-                    ),
+                    ////Button
+                    CustomButton(buttonTitle: 'Continue', navigationFunction: () {
+                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>QuestionnaireSurvey()));
+                      print("Sign up click");
+                    },),
                     Container(
                       margin: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.18,
+                          left: MediaQuery.of(context).size.width * 0.08,
                           top: MediaQuery.of(context).size.height * 0.08),
                       child: Text.rich(
                         TextSpan(
@@ -117,8 +96,7 @@ class SignUp extends StatelessWidget {
                                       Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
-                                              // ignore: prefer_const_constructors
-                                              builder: (context) => Signin()));
+                                              builder: (context) => SelfCheckSlider()));
                                       print("Sign in click");
                                     }),
                             ]),
@@ -148,7 +126,6 @@ class _CheckerBoxState extends State<CheckerBox> {
   bool? isCheck;
   @override
   void initState() {
-    // TODO: implement initState
     isCheck = false;
     super.initState();
   }
@@ -175,6 +152,7 @@ class _CheckerBoxState extends State<CheckerBox> {
                 text: "I agree with ",
                 style:
                     TextStyle(color: grayshade.withOpacity(0.8), fontSize: 16),
+                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   TextSpan(
                       text: "Terms ",

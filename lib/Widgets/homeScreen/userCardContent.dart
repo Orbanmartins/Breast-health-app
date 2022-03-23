@@ -15,9 +15,9 @@ final String userLabel;
                 Icon(
                   userIcon,
                   color: mainColor,
-                  size: 60.0,
+                  size: 50.0,
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 15,),
                 Center(
                   child: Text(
                    userLabel,
@@ -26,7 +26,7 @@ final String userLabel;
                         color: Colors.grey[700]
                         ,
                         fontWeight: FontWeight.bold,
-                        fontSize:18,),
+                        fontSize:15,),
                   ),
                 ),
               ],

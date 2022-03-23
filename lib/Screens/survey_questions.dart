@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
-import 'dart:convert';
 
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:survey_kit/survey_kit.dart';
 
 class SurveyQuestions extends StatelessWidget {
@@ -15,135 +13,131 @@ class SurveyQuestions extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: Align(
-            alignment: Alignment.center,
-            child: FutureBuilder<Task>(
-              future: getSampleTask(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done &&
-                    snapshot.hasData &&
-                    snapshot.data != null) {
-                  final task = snapshot.data!;
-                  return SurveyKit(
-                    onResult: (SurveyResult result) {
-                      print(result.finishReason);
-                    },
-                    task: task,
-                    showProgress: true,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    localizations: {
-                      'cancel': 'Cancel',
-                      'next': 'Next',
-                    },
-                    themeData: Theme.of(context).copyWith(
-                      colorScheme: ColorScheme.fromSwatch(
-                        primarySwatch: Colors.pink,
-                      ).copyWith(
-                        onPrimary: scaffoldBackgroundColor,
+        body: Align(
+          alignment: Alignment.center,
+          child: FutureBuilder<Task>(
+            future: getSampleTask(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done &&
+                  snapshot.hasData &&
+                  snapshot.data != null) {
+                final task = snapshot.data!;
+                return SurveyKit(
+                  onResult: (SurveyResult result) {
+                    print(result.finishReason);
+                  },
+                  task: task,
+                  showProgress: true,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  localizations: {
+                    'cancel': 'Cancel',
+                    'next': 'Next',
+                  },
+                  themeData: Theme.of(context).copyWith(
+                    colorScheme: ColorScheme.fromSwatch(
+                      primarySwatch: Colors.pink,
+                    ).copyWith(
+                      onPrimary: scaffoldBackgroundColor,
+                    ),
+                    primaryColor: mainColor,
+                    backgroundColor:scaffoldBackgroundColor,
+                    appBarTheme: const AppBarTheme(
+                      color: mainColor,
+                      iconTheme: IconThemeData(
+                        color: mainColor,
                       ),
+                      titleTextStyle: TextStyle(
+                        color: mainColor,
+                      ),
+                    ),
+                    iconTheme: const IconThemeData(
+                      color: mainColor,
+                    ),
+                    textSelectionTheme: TextSelectionThemeData(
+                      cursorColor: mainColor,
+                      selectionColor: mainColor,
+                      selectionHandleColor: mainColor,
+                    ),
+                    cupertinoOverrideTheme: CupertinoThemeData(
                       primaryColor: mainColor,
-                      backgroundColor:scaffoldBackgroundColor,
-                      appBarTheme: const AppBarTheme(
-                        color: mainColor,
-                        iconTheme: IconThemeData(
-                          color: mainColor,
+                    ),
+                    outlinedButtonTheme: OutlinedButtonThemeData(
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(
+                          Size(150.0, 60.0),
                         ),
-                        titleTextStyle: TextStyle(
-                          color: mainColor,
-                        ),
-                      ),
-                      iconTheme: const IconThemeData(
-                        color: mainColor,
-                      ),
-                      textSelectionTheme: TextSelectionThemeData(
-                        cursorColor: mainColor,
-                        selectionColor: mainColor,
-                        selectionHandleColor: mainColor,
-                      ),
-                      cupertinoOverrideTheme: CupertinoThemeData(
-                        primaryColor: mainColor,
-                      ),
-                      outlinedButtonTheme: OutlinedButtonThemeData(
-                        style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all(
-                            Size(150.0, 60.0),
-                          ),
-                          side: MaterialStateProperty.resolveWith(
-                            (Set<MaterialState> state) {
-                              if (state.contains(MaterialState.disabled)) {
-                                return BorderSide(
-                                  color: Colors.grey,
-                                );
-                              }
+                        side: MaterialStateProperty.resolveWith(
+                          (Set<MaterialState> state) {
+                            if (state.contains(MaterialState.disabled)) {
                               return BorderSide(
-                                color: mainColor,
+                                color: Colors.grey,
                               );
-                            },
-                          ),
-                          textStyle: MaterialStateProperty.resolveWith(
-                            (Set<MaterialState> state) {
-                              if (state.contains(MaterialState.disabled)) {
-                                return Theme.of(context)
-                                    .textTheme
-                                    .button
-                                    ?.copyWith(
-                                      color: Colors.grey,
-                                    );
-                              }
+                            }
+                            return BorderSide(
+                              color: mainColor,
+                            );
+                          },
+                        ),
+                        textStyle: MaterialStateProperty.resolveWith(
+                          (Set<MaterialState> state) {
+                            if (state.contains(MaterialState.disabled)) {
                               return Theme.of(context)
                                   .textTheme
                                   .button
                                   ?.copyWith(
-                                    color: mainColor,
+                                    color: Colors.grey,
                                   );
-                            },
-                          ),
-                        ),
-                      ),
-                      textButtonTheme: TextButtonThemeData(
-                        style: ButtonStyle(
-                          textStyle: MaterialStateProperty.all(
-                            Theme.of(context).textTheme.button?.copyWith(
+                            }
+                            return Theme.of(context)
+                                .textTheme
+                                .button
+                                ?.copyWith(
                                   color: mainColor,
-                                ),
-                          ),
-                        ),
-                      ),
-                      // ignore: prefer_const_constructors
-                      textTheme: TextTheme(
-                        headline2: TextStyle(
-                          fontSize: 28.0,
-                          color: Colors.black,
-                        ),
-                        headline5: TextStyle(
-                          fontSize: 24.0,
-                          color: Colors.black,
-                        ),
-                        bodyText2: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                        ),
-                        subtitle1: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                        ),
-                      ),
-                      inputDecorationTheme: InputDecorationTheme(
-                        labelStyle: TextStyle(
-                          color: Colors.black,
+                                );
+                          },
                         ),
                       ),
                     ),
-                    surveyProgressbarConfiguration: SurveyProgressConfiguration(
-                      backgroundColor: Colors.white,
+                    textButtonTheme: TextButtonThemeData(
+                      style: ButtonStyle(
+                        textStyle: MaterialStateProperty.all(
+                          Theme.of(context).textTheme.button?.copyWith(
+                                color: mainColor,
+                              ),
+                        ),
+                      ),
                     ),
-                  );
-                }
-                return CircularProgressIndicator.adaptive();
-              },
-            ),
+                    textTheme: TextTheme(
+                      headline2: TextStyle(
+                        fontSize: 24.0,
+                        color: Colors.black,
+                      ),
+                      headline5: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                      ),
+                      bodyText2: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                      ),
+                      subtitle1: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                      ),
+                    ),
+                    inputDecorationTheme: InputDecorationTheme(
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  surveyProgressbarConfiguration: SurveyProgressConfiguration(
+                    backgroundColor: Colors.white,
+                  ),
+                );
+              }
+              return CircularProgressIndicator.adaptive();
+            },
           ),
         ),
       ),
@@ -156,8 +150,8 @@ class SurveyQuestions extends StatelessWidget {
       steps: [
         InstructionStep(
           title: 'Welcome to the breast health survey',
-          text: 'Get ready for a bunch of super random questions!',
-          buttonText: 'Let\'s go!',
+          text: 'Please take time and fill in these questions as honestly as you can',
+          buttonText: 'Next',
         ),
         QuestionStep(
           title: 'How old are you?',
@@ -241,10 +235,4 @@ class SurveyQuestions extends StatelessWidget {
     return Future.value(task);
   }
 
-  Future<Task> getJsonTask() async {
-    final taskJson = await rootBundle.loadString('assets/example_json.json');
-    final taskMap = json.decode(taskJson);
-
-    return Task.fromJson(taskMap);
-  }
 }

@@ -9,12 +9,12 @@ class UserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(7),
       height: 50,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: kElevationToShadow[3],
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: kElevationToShadow[1],
       ),
       child: InkResponse(
         containedInkWell: true,
@@ -24,7 +24,7 @@ class UserCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         onTap: navigationFunction,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(5.0),
           child: cardChild,
         ),
       ),

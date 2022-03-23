@@ -12,10 +12,10 @@ class TestimoniesCard extends StatelessWidget {
     return Container(
 
       margin: const EdgeInsets.symmetric(vertical:5,horizontal: 10),
-        height:125,
-        width: 330,
+        height:150,
+        width: 300,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20), boxShadow:kElevationToShadow[3],),
+          color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow:kElevationToShadow[3],),
       // height: 20,
       // width: 30.w,
       child: InkWell(
