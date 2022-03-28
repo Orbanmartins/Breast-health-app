@@ -18,83 +18,103 @@ class _NextCheckState extends State<NextCheck> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          SizedBox(
-            height: 80,
-          ),
-
-          //This is the textfield that will need to be edited
-          TextField(
-            readOnly: true,
-            controller: dateController,
-            decoration: InputDecoration(  border: OutlineInputBorder(),hintText: "Please select Date"),
-            onTap: () async {
-              var date = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(1900),
-                  lastDate: DateTime(2100));
-              dateController.text = date.toString().substring(0, 10);
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Text(
-              'When did your last period end?',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-            ),
-          ),
-          InputField(
-              inputIcon: Icon(Icons.date_range_rounded),
-              hintTexti: "Please select Date"),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Text(
-              'How many days did it last?',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-            ),
-          ),
-          InputField(
-              inputIcon: Icon(
-                Icons.view_day_sharp,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: 80,
               ),
-              hintTexti: "Please Select Days"),
-          const SizedBox(
-            height: 10,
-          ),
-          const CheckerBox(),
-          Container(
-            margin: EdgeInsets.all(20),
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.info_outline,
-                    color: mainColor,
-                    size: 50,
+      
+              //This is the textfield that will need to be edited
+              Container(
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                decoration: BoxDecoration(
+                  color: inputField,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: TextField(
+                    readOnly: true,
+                    controller: dateController,
+                    decoration: InputDecoration(
+                       border: InputBorder.none,
+                        // border: OutlineInputBorder(),
+                        hintText: "Please select Date"),
+                    onTap: () async {
+                      var date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2100));
+                      dateController.text = date.toString().substring(0, 10);
+                    },
                   ),
-                  title: Text(
-                    'Your next self-check is scheduled for April 06,2022',
-                    style: TextStyle(
-                      fontSize: 16,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  'When did your last period end?',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+              ),
+              InputField(
+                  inputIcon: Icon(Icons.date_range_rounded),
+                  hintTexti: "Please select Date"),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  'How many days did it last?',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+              ),
+              InputField(
+                  inputIcon: Icon(
+                    Icons.view_day_sharp,
+                  ),
+                  hintTexti: "Please Select Days"),
+              const SizedBox(
+                height: 10,
+              ),
+              const CheckerBox(),
+              Container(
+                margin: EdgeInsets.all(20),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.info_outline,
+                        color: mainColor,
+                        size: 50,
+                      ),
+                      title: Text(
+                        'Your next self-check is scheduled for April 06,2022',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
+      
+              CustomButton(
+                buttonTitle: 'Submit',
+                navigationFunction: () {
+                  Navigator.pushNamed(context, '/homeScreen');
+                },
+              )
+            ],
           ),
-
-          CustomButton(buttonTitle: 'Submit', navigationFunction: () {
-                    Navigator.pushNamed(context, '/homeScreen');
-                  },)
-        ],
+        ),
       ),
     );
   }

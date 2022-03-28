@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:breast_health_app/Constants/constants.dart';
+import 'package:breast_health_app/Screens/Articles/bottomNav.dart';
 import 'package:breast_health_app/Screens/signup.dart';
+import 'package:breast_health_app/Screens/survey.dart';
 import 'package:breast_health_app/Widgets/button.dart';
 import 'package:breast_health_app/Widgets/input_field.dart';
-import 'package:breast_health_app/Widgets/navigationBar/bottom_navigation_bar.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -81,9 +82,10 @@ class Signin extends StatelessWidget {
                   ///
                   CustomButton(buttonTitle: 'Sign In', navigationFunction: () {
                       Navigator.pushReplacement(
+                        
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => BasicBottomNavBar()));
+                                            builder: (context) => QuestionnaireSurvey()));
                       print("Sign up click");
                     },),
                 

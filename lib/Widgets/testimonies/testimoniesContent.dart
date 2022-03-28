@@ -15,7 +15,7 @@ class TestimoniesContent extends StatelessWidget {
   // final String readMore;
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -35,7 +35,8 @@ class TestimoniesContent extends StatelessWidget {
                 Text(
                   userTitle,
                   textAlign: TextAlign.left,
-                  overflow: TextOverflow.ellipsis,
+                   overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   style: TextStyle(
                     color: Colors.grey[900],
                     fontWeight: FontWeight.w500,
@@ -46,18 +47,12 @@ class TestimoniesContent extends StatelessWidget {
                   height: 3,
                 ),
                 //The body area
-                Expanded(
-                  child: Text(
-                    userBody,
-                    textAlign: TextAlign.left,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.normal,
-                      fontSize: bodyTextSize,
-                    ),
-                  ),
+                Text(
+                  userBody,
+                  textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: kDetailContent
                 ),
                 SizedBox(
                   height: 4,

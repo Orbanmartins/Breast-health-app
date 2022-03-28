@@ -98,7 +98,7 @@ class KnoweledgeCentreCardsState extends State<KnoweledgeCentreCards> {
                     ),
                      KnowledgeCentreCard(
                       navigationFunction: () {
-                        Navigator.pushNamed(context, '/individualNationalId');
+                        Navigator.pushNamed(context, '/bottomNavbar');
                       },
                       iconUsed: Icons.article,
                       cardLabel: 'Health Tips',

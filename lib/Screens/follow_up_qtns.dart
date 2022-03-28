@@ -22,33 +22,39 @@ class _FollowUpQuestionsState extends State<FollowUpQuestions> {
             child: SingleChildScrollView(
       child: Column(
         children: [
-          
           CustomCard(
-            cardData: 'What did you feel/ see and what does it feel/ look like?',
+            cardData:
+                'What did you feel/ see and what does it feel/ look like?',
             children: [
               FollowUpField(hintTexti: 'Type Response Here'),
             ],
           ),
           CustomCard(
-            cardData: 'Do you know anyone close to\n you who had cancer',
+            cardData: 'What did you feel/ see it',
+            children: [
+              FollowUpField(hintTexti: 'Type Response Here'),
+            ],
+          ),
+          CustomCard(
+            cardData: 'Is it in both breasts or just one?',
+            children: [
+              CheckBoxList(
+                children: [
+                  'Both',
+                  'Just one',
+                
+                ],
+              ),
+            ],
+          ),
+           CustomCard(
+            cardData: 'Have you felt/seen this before?',
             children: [
               CheckBoxList(
                 children: [
                   'Yes',
                   'No',
-                ],
-              ),
-            ],
-          ),
-          CustomCard(
-            cardData: 'What is your motivation for\n using the application',
-            children: [
-              CheckBoxList(
-                children: [
-                  'Research',
-                  'Breast health',
-                  'News about breast health',
-                  'Other'
+                
                 ],
               ),
             ],

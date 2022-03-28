@@ -13,13 +13,7 @@ class _FaqsAccordionState extends State<FaqsAccordion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: mainColor,
-        centerTitle: true,
-        title: const Text(
-          'Frequent questions',
-        ),
-      ),
+     
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -69,3 +63,20 @@ class _FaqsAccordionState extends State<FaqsAccordion> {
     );
   }
 }
+
+// class _FaqsAccordionState extends State<FaqsAccordion> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.builder( itemCount: faqsList.length,
+//       scrollDirection: Axis.vertical,
+//       shrinkWrap: true,
+//       physics: BouncingScrollPhysics(),
+//       itemBuilder: (context, index) {
+//         var faqs = faqsList[index];
+//        return Accordion(faqs:faqs);
+        
+        
+//          }   );
+//   }
+// }
+

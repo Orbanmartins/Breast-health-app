@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
+import 'package:breast_health_app/Constants/constants.dart';
 import 'package:breast_health_app/Widgets/Survey/CheckBoxList.dart';
 import 'package:breast_health_app/Widgets/Survey/CustomCard.dart';
 import 'package:breast_health_app/Widgets/button.dart';
@@ -27,10 +28,12 @@ class _QuestionnaireSurveyState extends State<QuestionnaireSurvey> {
               Slider(
                 min: 0.0,
                 max: 100.0,
-                activeColor: Colors.purple,
-                inactiveColor: Colors.purple.shade100,
+                activeColor: mainColor,
+                inactiveColor: greyColor,
                 thumbColor: Colors.pink,
+                divisions: 100,
                 value: _currentSliderValue,
+                label: '$_currentSliderValue',
                 onChanged: (double value) {
                   setState(() {
                     _currentSliderValue = value;
@@ -80,7 +83,7 @@ class _QuestionnaireSurveyState extends State<QuestionnaireSurvey> {
           CustomButton(
             buttonTitle: 'Submit',
             navigationFunction: () {
-              Navigator.pushNamed(context, '/homeScreen');
+             Navigator.pushNamed(context, '/bottomNavbar');
             },
           )
         ],

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:breast_health_app/Constants/constants.dart';
-import 'package:breast_health_app/Screens/selfCheck/slide.dart';
+import 'package:breast_health_app/Screens/selfCheck/self_check_slider.dart';
 import 'package:breast_health_app/Screens/survey.dart';
 import 'package:breast_health_app/Widgets/button.dart';
 import 'package:breast_health_app/Widgets/input_field.dart';
