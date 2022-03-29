@@ -24,3 +24,5 @@ double  mediumTextSize = 20.0;
 double  largeTextSize = 26.0;
 double  smallTextSize =13;
 
+const faqsUrl = 'http://10.0.2.2:3000/faqs'; 
+const surveyUrl = 'http://10.0.2.2:3000/survey/questions'; 
