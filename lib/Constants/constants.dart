@@ -61,3 +61,5 @@ var descriptionStyle = TextStyle(
   fontSize: 15.0,
   height: 2.0,
 );
+const faqsUrl = 'http://10.0.2.2:3000/faqs'; 
+const surveyUrl = 'http://10.0.2.2:3000/survey/questions'; 

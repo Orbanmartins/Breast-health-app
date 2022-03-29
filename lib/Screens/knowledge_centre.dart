@@ -84,7 +84,7 @@ class KnoweledgeCentreCardsState extends State<KnoweledgeCentreCards> {
                   children: [
                     KnowledgeCentreCard(
                       navigationFunction: () {
-                        Navigator.pushNamed(context, '/selfieUpload');
+                        Navigator.pushNamed(context, '/faqsAccordion');
                       },
                       iconUsed: Icons.question_answer,
                       cardLabel: 'Frequently Asked Questions',
