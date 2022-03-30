@@ -1,6 +1,5 @@
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:breast_health_app/Models/news.dart';
-import 'package:breast_health_app/Models/news.dart';
 import 'package:flutter/material.dart';
 
 
@@ -21,6 +20,7 @@ class PrimaryCard extends StatelessWidget {
         children: [
           Row(
             children: [
+              // ignore: prefer_const_constructors
               CircleAvatar(
                 radius: 5.0,
                 backgroundColor: kGrey1,

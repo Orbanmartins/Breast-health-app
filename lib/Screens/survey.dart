@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:breast_health_app/Constants/constants.dart';
+import 'package:breast_health_app/Screens/Articles/bottomNav.dart';
 import 'package:breast_health_app/Widgets/Survey/CheckBoxList.dart';
 import 'package:breast_health_app/Widgets/Survey/CustomCard.dart';
 import 'package:breast_health_app/Widgets/button.dart';
@@ -21,6 +22,7 @@ class _QuestionnaireSurveyState extends State<QuestionnaireSurvey> {
         body: SafeArea(
             child: SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CustomCard(
             cardData: 'Please select your age',
@@ -57,7 +59,7 @@ class _QuestionnaireSurveyState extends State<QuestionnaireSurvey> {
             ],
           ),
           CustomCard(
-            cardData: 'Do you know anyone close to\n you who had cancer',
+            cardData: 'Do you know anyone close to you who had cancer',
             children: [
               CheckBoxList(
                 children: [
@@ -68,7 +70,7 @@ class _QuestionnaireSurveyState extends State<QuestionnaireSurvey> {
             ],
           ),
           CustomCard(
-            cardData: 'What is your motivation for\n using the application',
+            cardData: 'What is your motivation for using the application',
             children: [
               CheckBoxList(
                 children: [
@@ -80,10 +82,12 @@ class _QuestionnaireSurveyState extends State<QuestionnaireSurvey> {
               ),
             ],
           ),
-          CustomButton(
+          SurveyButton(
             buttonTitle: 'Submit',
             navigationFunction: () {
-             Navigator.pushNamed(context, '/bottomNavbar');
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => BottomNav()));
+
+            //  Navigator.pushNamed(context, '/bottomNavbar');
             },
           )
         ],

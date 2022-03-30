@@ -3,7 +3,7 @@
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:breast_health_app/Screens/Articles/account_view.dart';
 import 'package:breast_health_app/Screens/Articles/favorite_view.dart';
-import 'package:breast_health_app/Screens/Articles/education_centre.dart';
+import 'package:breast_health_app/Screens/Articles/knowledge_centre.dart';
 import 'package:breast_health_app/Screens/Articles/search_view.dart';
 import 'package:breast_health_app/Screens/home_screen.dart';
 import 'package:breast_health_app/Screens/schedule.dart';
@@ -26,7 +26,7 @@ class _BottomNavState extends State<BottomNav> {
 
   static List<Widget> _bottomNavView = [
     HomeScreeen(),
-    EducationCentre(),
+    KnowledgeCentre(),
     SearchView(),
     ScheduleCalendar(),
     AccountView(),

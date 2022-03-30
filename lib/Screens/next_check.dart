@@ -97,9 +97,7 @@ class _NextCheckState extends State<NextCheck> {
                       ),
                       title: Text(
                         'Your next self-check is scheduled for April 06,2022',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+                        style: kBodyTextStyle
                       ),
                     ),
                   ),

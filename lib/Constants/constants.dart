@@ -25,7 +25,8 @@ double mediumTextSize = 20.0;
 double largeTextSize = 26.0;
 double smallTextSize = 13;
 
-var kCheckboxListTileStyle = TextStyle(fontSize: 15);
+var kBodyTextStyle = TextStyle(fontSize: 16, color: Colors.black);
+var kCheckboxListTileStyle = TextStyle(fontSize: 16);
 
 ///For the news section
 ///

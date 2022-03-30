@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:breast_health_app/Screens/follow_up_qtns.dart';
 import 'package:breast_health_app/Widgets/button.dart';
 import 'package:breast_health_app/Widgets/selfcheck_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class SelfCheckPageFive extends StatelessWidget {
                     buttonUsed: CustomButton(
                       buttonTitle: 'Finish',
                       navigationFunction: () {
-                        Navigator.pushNamed(context, '/homeScreen');
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => FollowUpQuestions()));
                       },
                     )))));
   }

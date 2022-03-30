@@ -14,6 +14,7 @@ class FollowUpField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+      
         Container(
           margin: const EdgeInsets.only(
             left: 20,
@@ -22,14 +23,15 @@ class FollowUpField extends StatelessWidget {
           ),
         ),
         Container(
-            margin: const EdgeInsets.only(left: 20, right: 20),
+          // height: 60,
             decoration: BoxDecoration(
-              color: inputField,
+              color: cameraColor,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: TextField(
+                maxLines: 5,
                 decoration: InputDecoration(
                   hintText: hintTexti,
                   border: InputBorder.none,

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, prefer_const_constructors
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:breast_health_app/Constants/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -47,11 +48,12 @@ class TestimoniesContent extends StatelessWidget {
                   height: 3,
                 ),
                 //The body area
-                Text(
+                AutoSizeText(
                   userBody,
                   textAlign: TextAlign.left,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  
+                  // overflow: TextOverflow.ellipsis,
+                  maxLines: 4,
                   style: kDetailContent
                 ),
                 SizedBox(

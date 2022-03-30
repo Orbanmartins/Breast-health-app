@@ -24,7 +24,9 @@ class _CheckBoxListState extends State<CheckBoxList> {
         children: children.map((element) {
       int index = children.indexOf(element);
       return CheckboxListTile(
-        activeColor: Colors.teal,
+         contentPadding: EdgeInsets.zero,
+        activeColor: mainColor,
+        checkColor: Colors.white,
         title: Text(
           element,
           style: kCheckboxListTileStyle,

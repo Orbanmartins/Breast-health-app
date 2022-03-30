@@ -7,7 +7,7 @@ import 'package:breast_health_app/Screens/Articles/articles_tab_view.dart';
 import 'package:breast_health_app/Screens/Faqs.dart';
 import 'package:flutter/material.dart';
 
-class EducationCentre extends StatelessWidget {
+class KnowledgeCentre extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
