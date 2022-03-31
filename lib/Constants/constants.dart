@@ -63,3 +63,4 @@ var descriptionStyle = TextStyle(
 );
 const faqsUrl = 'http://10.0.2.2:3000/faqs'; 
 const surveyUrl = 'http://10.0.2.2:3000/survey/questions'; 
+const surveyAnsUrl = 'http://10.0.2.2:3000/survey/answers'; 
