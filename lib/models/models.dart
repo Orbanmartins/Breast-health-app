@@ -1,5 +1,4 @@
 
-
 class Faqs {
   final String question;
   final String answer;
