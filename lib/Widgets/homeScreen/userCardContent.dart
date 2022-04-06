@@ -9,29 +9,27 @@ final IconData userIcon;
 final String userLabel;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    userIcon,
-                    color: mainColor,
-                    size: 60.0,
+    return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  userIcon,
+                  color: mainColor,
+                  size: 60.0,
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Text(
+                   userLabel,
+                     textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.grey[700]
+                        ,
+                        fontWeight: FontWeight.bold,
+                        fontSize:18,),
                   ),
-                  SizedBox(height: 10,),
-                  Center(
-                    child: Text(
-                     userLabel,
-                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.grey[800]
-                          ,
-                          fontWeight: FontWeight.bold,
-                          fontSize:18,),
-                    ),
-                  ),
-                ],
-              ),
-    );
+                ),
+              ],
+            );
   }
 }

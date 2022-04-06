@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:breast_health_app/Constants/constants.dart';
+import 'package:breast_health_app/Screens/home_screen.dart';
 import 'package:breast_health_app/Screens/signup.dart';
 import 'package:breast_health_app/Widgets/bottom_navigation_bar.dart';
 import 'package:breast_health_app/Widgets/input_field.dart';
@@ -82,7 +83,7 @@ class Signin extends StatelessWidget {
                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => BottomNavBar()));
+                                            builder: (context) => HomeScreeen()));
                       print("Sign up click");
                     },
                     child: Container(

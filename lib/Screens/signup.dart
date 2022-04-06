@@ -48,6 +48,8 @@ class SignUp extends StatelessWidget {
                           left: MediaQuery.of(context).size.width * 0.09),
                       child: Image.asset("assets/login.png"),
                     ),
+
+                    //Add a gender field in the sign up process as well
                     InputField( inputIcon: Icon(Icons.email), hintTexti: "Email"),
                     const SizedBox(
                       height: 10,

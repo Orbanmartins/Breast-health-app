@@ -146,6 +146,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.2"
+  flutter_form_builder:
+    dependency: "direct main"
+    description:
+      name: flutter_form_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.1.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -234,7 +241,7 @@ packages:
     source: hosted
     version: "2.4.4"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       url: "https://pub.dartlang.org"
@@ -567,6 +574,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.3"
+  textfield_datepicker:
+    dependency: "direct main"
+    description:
+      name: textfield_datepicker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   typed_data:
     dependency: transitive
     description:
