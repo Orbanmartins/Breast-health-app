@@ -1,6 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:breast_health_app/Constants/constants.dart';
+import 'package:breast_health_app/Constants/mathConstants.dart';
+import 'package:breast_health_app/Widgets/Design/header_clipper.dart';
 import 'package:breast_health_app/Widgets/FollowUp/follow_up_input.dart';
 import 'package:breast_health_app/Widgets/Survey/CheckBoxList.dart';
 import 'package:breast_health_app/Widgets/Survey/CustomCard.dart';
@@ -16,17 +18,41 @@ class FollowUpQuestions extends StatefulWidget {
 
 class _FollowUpQuestionsState extends State<FollowUpQuestions> {
   double _currentSliderValue = 20;
+   var width;
+  var height;
   @override
   Widget build(BuildContext context) {
+      width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SafeArea(
             child: Column(
       children: [
-        Align(
-          alignment: Alignment.topLeft,
-          child: Text(
-            'Follow up questions',
-            style: kTitleCard,
+        Positioned(
+          top: 0,
+          child: ClipPath(
+            clipper: HeaderClipper(82),
+            child: Container(
+              color: mainColor,
+              height: size.height * 0.280,
+              width: size.width,
+              child: AppBar(
+                elevation: 0.0,
+                backgroundColor: mainColor,
+                title: const Text('Follow up questions',
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
+                leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(Icons.arrow_back),
+                  color: Colors.white,
+                ),
+                centerTitle: true,
+              ),
+            ),
           ),
         ),
         Expanded(
